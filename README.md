@@ -62,6 +62,29 @@ python -m pip install pandas matplotlib transformers torch google-play-scraper
 python .\gojek_grab_sentiment.py
 ```
 
+## Visualisasi Market Insight Tambahan
+
+Setelah file `playstore_reviews_processed_sentiment.csv` tersedia, jalankan script berikut untuk membuat visualisasi market insight tambahan tanpa scraping ulang:
+
+```powershell
+.\.venv\Scripts\python.exe .\market_insight_visuals.py
+```
+
+Atau dengan Python global:
+
+```powershell
+python .\market_insight_visuals.py
+```
+
+Output akan tersimpan di folder `market_insight_charts/`:
+
+- 01_daily_sentiment_trend.png
+- 02_weekly_net_sentiment_score.png
+- 03_daily_share_of_voice.png
+- 04_negative_heatmap_weekday_hour.png
+- 05_negative_issue_gap_dumbbell.png
+- market_insight_snapshot_latest_day.csv
+
 ## Output yang Dihasilkan
 
 Setelah script selesai, file berikut akan dibuat:
