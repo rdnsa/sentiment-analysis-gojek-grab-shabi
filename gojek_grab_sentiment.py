@@ -287,7 +287,7 @@ def _calculate_summary(df):
     return summary
 
 
-def _plot_sentiment_distribution(summary):
+def _plot_sentiment_distribution(summary, show_plot=False):
     """Generate and save bar chart for sentiment percentage by brand."""
     sentiment_order = ["positive", "neutral", "negative"]
     pivot = summary.pivot(index="brand", columns="sentiment", values="percentage").fillna(0)
@@ -300,7 +300,9 @@ def _plot_sentiment_distribution(summary):
     plt.xticks(rotation=0)
     plt.tight_layout()
     plt.savefig(CHART_PATH, dpi=150)
-    plt.show()
+    if show_plot:
+        plt.show()
+    plt.close()
 
 
 def _top_words(text_series, top_n=10):
@@ -363,7 +365,7 @@ def _print_top_words_by_brand_and_sentiment(df):
             print(f"- {brand} | {sentiment}: {words_str}")
 
 
-def main():
+def main(show_plot=False):
     """End-to-end workflow: scrape Play Store reviews, analyze sentiment, summarize, and visualize."""
     global SENTIMENT_PIPELINE, MODEL_MAX_LENGTH, MODEL_NUM_LABELS
 
@@ -410,7 +412,7 @@ def main():
     print(summary.to_string(index=False))
 
     # 7) Visualization
-    _plot_sentiment_distribution(summary)
+    _plot_sentiment_distribution(summary, show_plot=show_plot)
     print(f"Chart saved to: {CHART_PATH}")
 
     # 8) Console insights
@@ -421,4 +423,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(show_plot=True)
