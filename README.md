@@ -39,14 +39,39 @@ Script utama ada di file gojek_grab_sentiment.py.
 Jalankan di folder project:
 
 ```powershell
-.\.venv\Scripts\python.exe -m pip install pandas matplotlib transformers torch google-play-scraper
+.\.venv\Scripts\python.exe -m pip install pandas matplotlib transformers torch google-play-scraper streamlit
 ```
 
 Kalau belum pakai virtual environment:
 
 ```powershell
-python -m pip install pandas matplotlib transformers torch google-play-scraper
+python -m pip install pandas matplotlib transformers torch google-play-scraper streamlit
 ```
+
+## Web App Lokal (tanpa database)
+
+Project sekarang sudah punya web app lokal di file `web_app.py` dengan fitur:
+
+- Jalankan scraping + sentiment + visualisasi dari tombol web
+- Preview tabel data dan image chart
+- Download hasil per file (CSV/PNG)
+- Download semua output sekaligus dalam file ZIP
+
+### Menjalankan Web App
+
+#### Opsi 1 (pakai venv)
+
+```powershell
+.\.venv\Scripts\python.exe -m streamlit run .\web_app.py
+```
+
+#### Opsi 2 (pakai Python global)
+
+```powershell
+python -m streamlit run .\web_app.py
+```
+
+Setelah command dijalankan, Streamlit akan memberi URL lokal (biasanya `http://localhost:8501`).
 
 ## Cara Menjalankan
 
@@ -108,4 +133,6 @@ Di console juga akan tampil:
 ## Struktur Project
 
 - gojek_grab_sentiment.py: script utama end-to-end
+- market_insight_visuals.py: script visualisasi market insight tambahan
+- web_app.py: web app lokal untuk run pipeline + preview + download output
 - README.md: panduan menjalankan project
