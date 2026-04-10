@@ -4,6 +4,33 @@ Project ini dipakai untuk membandingkan opini publik tentang Gojek dan Grab dari
 
 Script utama ada di file gojek_grab_sentiment.py.
 
+## Cara Clone dari Repository Orang Lain
+
+1. Salin URL repository tujuan (HTTPS atau SSH).
+2. Clone repository ke komputer lokal.
+3. Masuk ke folder project hasil clone.
+
+### Opsi HTTPS
+
+```powershell
+git clone https://github.com/rdnsa/sentiment-analysis-gojek-grab-shabi.git
+cd .\sentiment-analysis-gojek-grab-shabi
+```
+
+### Opsi SSH
+
+```powershell
+git clone git@github.com:rdnsa/sentiment-analysis-gojek-grab-shabi.git
+cd .\sentiment-analysis-gojek-grab-shabi
+```
+
+Kalau ingin menentukan nama folder lokal sendiri:
+
+```powershell
+git clone https://github.com/rdnsa/sentiment-analysis-gojek-grab-shabi.git nama-folder-lokal
+cd .\nama-folder-lokal
+```
+
 ## Ringkasan Alur
 
 1. Ambil review aplikasi dari Google Play:
