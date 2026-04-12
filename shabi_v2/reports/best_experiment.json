@@ -1,0 +1,10 @@
+{
+  "experiment_name": "experiment_1",
+  "algorithm": "SVM",
+  "feature_extraction": "TF-IDF",
+  "split": "80/20",
+  "train_accuracy": 0.9558333333333333,
+  "test_accuracy": 0.8733333333333333,
+  "model_path": "models/svm_tfidf_80_20.joblib",
+  "notes": "PASS"
+}
