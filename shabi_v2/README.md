@@ -19,11 +19,11 @@ Folder ini adalah versi submission-ready dari flow sebelumnya, disesuaikan untuk
   - `positive` untuk skor 4-5
 
 ### Kriteria 3 - Algoritma machine learning
-- File training: `scripts/train_experiments.py`
+- File training utama untuk submission: `notebooks/01_training_submission.ipynb`
 - Terdapat 3 skema pelatihan berbeda:
   1. SVM + TF-IDF + split 80/20
   2. Logistic Regression + TF-IDF + split 70/30
-  3. BiLSTM + sequence tokenizer + split 80/20 (deep learning)
+  3. Multinomial Naive Bayes + TF-IDF + split 80/20
 
 ### Kriteria 4 - Akurasi testing minimal 85%
 - Script training otomatis menyimpan metrik akurasi train/test di:
@@ -65,8 +65,8 @@ python -m pip install -r requirements.txt
 ```
 
 Catatan kompatibilitas:
-- Untuk menjalankan eksperimen deep learning (BiLSTM), disarankan Python 3.10-3.12.
-- Jika memakai Python 3.13, gunakan mode cepat (`--skip-deep-learning`) atau jalankan deep learning di environment Python 3.12 terpisah.
+- Notebook submission utama sudah kompatibel dengan Python 3.13 (tanpa TensorFlow).
+- Dependency TensorFlow di `requirements.txt` bersifat opsional (hanya jika ingin eksperimen deep learning terpisah).
 
 ## Menjalankan Pipeline
 
@@ -97,34 +97,39 @@ Notebook utama:
 - `notebooks/01_training_submission.ipynb`
 
 Notebook ini berisi:
-- scraping
 - preprocessing + labeling
 - 3 eksperimen training
 - inference dengan output kelas kategorikal
 
-## Output Penting untuk Submission
+Notebook ini tidak berisi proses scraping. Proses scraping disimpan terpisah di file `scripts/scrape_playstore_reviews.py` sesuai ketentuan.
+
+## Format Pengumpulan Ulang (Wajib)
+
+Saat membuat file `.zip` untuk upload ulang, pastikan isi utamanya mencakup file berikut:
 
 1. Kode scraping (`.py`):
 - `scripts/scrape_playstore_reviews.py`
 
-2. Notebook training (`.ipynb`):
+2. Notebook pelatihan (`.ipynb`) hanya satu file:
 - `notebooks/01_training_submission.ipynb`
 
-3. Requirements:
+3. File dependency:
 - `requirements.txt`
 
 4. Dataset hasil scraping (`.csv`):
 - `data/raw/playstore_reviews_raw_latest.csv`
-- `data/processed/playstore_reviews_processed_latest.csv`
 
-5. Bukti inference (opsional bernilai tambah):
-- Output cell inference pada notebook
-- Atau output terminal dari `scripts/run_inference.py`
+Catatan jumlah data:
+- `playstore_reviews_raw_latest.csv` berisi 10000 baris total (5000 Gojek + 5000 Grab).
 
 ## Checklist Sebelum Zip Submission
 
 - [ ] Notebook sudah dijalankan penuh dari atas ke bawah.
+- [ ] Notebook training hanya satu file (`notebooks/01_training_submission.ipynb`).
+- [ ] Notebook tidak berisi kode scraping.
 - [ ] Output cell inference terlihat (label kategorikal).
-- [ ] File CSV raw dan processed tersedia.
+- [ ] File scraping terpisah tersedia (`scripts/scrape_playstore_reviews.py`).
+- [ ] File CSV raw hasil scraping tersedia (`data/raw/playstore_reviews_raw_latest.csv`).
+- [ ] Jumlah data tetap 10000 (5000 Gojek + 5000 Grab).
 - [ ] `reports/metrics_experiments.csv` sudah terisi hasil pelatihan.
 - [ ] Semua file berada dalam satu folder `shabi_v2`, lalu di-zip.
