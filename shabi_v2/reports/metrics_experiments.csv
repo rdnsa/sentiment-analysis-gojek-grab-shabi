@@ -1,0 +1,3 @@
+experiment_name,algorithm,feature_extraction,split,train_accuracy,test_accuracy,model_path,notes
+experiment_2,Logistic Regression,TF-IDF,70/30,0.9272857142857143,0.897,models/logreg_tfidf_70_30.joblib,PASS
+experiment_1,SVM,TF-IDF,80/20,0.97675,0.886,models/svm_tfidf_80_20.joblib,PASS
