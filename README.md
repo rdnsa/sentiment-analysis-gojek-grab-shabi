@@ -1,4 +1,4 @@
-# Analisis Sentimen Gojek vs Grab (Data Google Play)
+# Sentiment Analysis Gojek vs Grab (Data Google Play)
 
 Project ini dipakai untuk membandingkan opini publik tentang Gojek dan Grab dari review aplikasi di Google Play Store.
 
